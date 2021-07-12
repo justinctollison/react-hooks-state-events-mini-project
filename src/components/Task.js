@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 
-function Task() {
+function Task({text, category}) {
+  const [isOnList, setIsOnList] = useState(true)
+
+  function handleDeleteFromList() {
+    setIsOnList((isOnList) => !isOnList);
+  }
+
+
   return (
-    <div className="task">
-      <div className="label">CATEGORY HERE</div>
-      <div className="text">TEXT HERE</div>
-      <button className="delete">X</button>
+    <div className="task" value={category}>
+      <div className="label">
+        {category}
+      </div>
+      <div className="text" value={text}>
+        {text}
+      </div>
+      <button 
+        className={isOnList ? "delete" : "add"}
+        onClick={handleDeleteFromList}
+      >X
+      </button>
     </div>
   );
 }
