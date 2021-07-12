@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 
-function Task({text, category}) {
-  const [isOnList, setIsOnList] = useState(true)
+function Task({text, category, handleDeleteFromList, isOnList}) {
+  //const [isOnList, setIsOnList] = useState(true)
 
-  function handleDeleteFromList() {
-    setIsOnList((isOnList) => !isOnList);
-  }
-
+  // function handleDeleteFromList() {
+  //   setIsOnList((isOnList) => !isOnList);
+  // }
 
   return (
     <div className="task" value={category}>
@@ -19,7 +18,8 @@ function Task({text, category}) {
       <button 
         className={isOnList ? "delete" : "add"}
         onClick={handleDeleteFromList}
-      >X
+      >
+        X
       </button>
     </div>
   );

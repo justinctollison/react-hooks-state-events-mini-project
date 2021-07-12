@@ -1,31 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
-function NewTaskForm({onTaskFormSubmit}) {
-  const [taskName, setTaskName] = useState("")
-  const [taskCategory, setTaskCategory] = useState("Code")
+function NewTaskForm({handleTaskCategory, onTaskFormSubmit, handleTaskName, taskCategory, taskName}) {
 
-
-  function handleTaskName(event) {
-    setTaskName(event.target.value)
-  }
-
-  function handleTaskCategory(event) {
-    setTaskCategory(event.target.value)
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault()
-    const newTask = {
-      text: taskName,
-      category: taskCategory,
-    };
-    onTaskFormSubmit(newTask)
-  }
-
-  console.log(taskCategory)
 
   return (
-    <form className="new-task-form" onSubmit={handleSubmit}>
+    <form className="new-task-form" onSubmit={onTaskFormSubmit}>
       <label>
         Task
         <input type="text" name="text" onChange={handleTaskName} value={taskName}/>
